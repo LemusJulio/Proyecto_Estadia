@@ -1,0 +1,224 @@
+/* ==========================
+   ESTILOS GENERALES
+   ========================== */
+   body {
+    font-family: 'Roboto', sans-serif;  /* Aplica la fuente 'Roboto' */
+    text-align: center;  /* Centra el texto */
+    background: linear-gradient(135deg, #a5891b, #1d577d, #196f3d, #8b4c14, #49235a, #757575, #1e2a36);
+    background-size: 800% 800%;
+    animation: gradientAnimation 20s ease infinite;   
+    margin: 0;  /* Elimina el margen predeterminado */
+    overflow-x: hidden;  /* Oculta el desplazamiento horizontal */
+    display: flex;  /* Utiliza el modelo de caja flexible */
+    flex-direction: column;  /* Dispone los hijos en columna */
+    min-height: 100vh;  /* Establece una altura mínima de la vista */
+    position: relative;  /* Define la posición como relativa */
+}   
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ==========================
+   HEADER (ENCABEZADO)
+   ========================== */
+   header .container {
+    display: flex;  /* Utiliza el modelo de caja flexible */
+    align-items: center;  /* Centra verticalmente los elementos */
+    justify-content: space-between;  /* Distribuye el espacio uniformemente entre los elementos */
+    padding: 5px 10px;  /* Aplica relleno interno */
+    background-color: rgb(240, 240, 240);  /* Define el color de fondo */
+    position: relative;  /* Define la posición como relativa */
+}
+
+header .logo img {
+    height: 60px;  /* Establece la altura de la imagen del logo */
+}
+
+header nav {
+    display: flex;  /* Utiliza el modelo de caja flexible */
+    align-items: center;  /* Centra verticalmente los elementos */
+    justify-content: center;  /* Centra horizontalmente los elementos */
+    width: 100%;  /* Ocupa todo el ancho disponible */
+    gap: 10px; /*Reduce el espacio entre los elementos*/
+}
+
+header nav p {
+    font-size: 1.5rem;  /* Establece el tamaño de la fuente */
+    font-weight: bold;  /* Define el peso de la fuente como negrita */
+    white-space: nowrap;  /* Evita que el texto se divida en líneas */
+    align-items: center;  /* Centra verticalmente los elementos */
+    width: 100%;  /* Ocupa todo el ancho disponible */
+}
+
+header nav a {
+    background-color: rgb(124, 0, 233);  /* Define el color de fondo */
+    color: white;  /* Define el color del texto */
+    padding: 4px 8px;  /* Aplica relleno interno */
+    border-radius: 3px;  /* Aplica un borde redondeado */
+    font-size: 1rem;  /* Establece el tamaño de la fuente */
+    text-decoration: none;  /* Elimina la decoración del enlace */
+    position: relative;  /* Define la posición como relativa */
+}
+
+header nav a:hover {
+    background-color: darkviolet;  /* Cambia el color de fondo al pasar el cursor */
+}
+
+/* RESPONSIVE HEADER */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;  /* Dispone los hijos en columna */
+        text-align: center;  /* Centra el texto */
+    }
+    header nav {
+        flex-wrap: wrap;  /* Permite el ajuste flexible de los elementos */
+        justify-content: center;  /* Centra horizontalmente los elementos */
+        gap: 20px;  /* Define el espacio entre los elementos */
+    }
+    header .logo img {
+        height: 40px;  /* Establece la altura de la imagen del logo */
+    }
+}
+
+/* ==========================
+   MAPA MENTAL
+   ========================== */
+   .mapa-container {
+    position: relative;  /* Define la posición como relativa */
+    display: flex;  /* Utiliza el modelo de caja flexible */
+    justify-content: center;  /* Centra horizontalmente los elementos */
+    align-items: center;  /* Centra verticalmente los elementos */
+    min-height: 80vh;  /* Establece una altura mínima del 80% de la vista */
+    width: 100%;  /* Ocupa todo el ancho disponible */
+    overflow: hidden;  /* Oculta el contenido que desborda el contenedor */
+}
+
+/* Nodo principal (nube central) */
+#nodo-principal {
+    position: relative;  /* Define la posición como relativa */
+    width: 300px;  /* Establece el ancho */
+    height: 200px;  /* Establece la altura */
+    background: linear-gradient(135deg, #00ff44, #6abafa, #ac5eff, #e91e63);  /* Aplica un degradado de fondo */
+    color: white;  /* Define el color del texto */
+    font-size: 1.5rem;  /* Establece el tamaño de la fuente */
+    font-weight: bold;  /* Define el peso de la fuente como negrita */
+    text-align: center;  /* Centra el texto */
+    display: flex;  /* Utiliza el modelo de caja flexible */
+    justify-content: center;  /* Centra horizontalmente los elementos */
+    align-items: center;  /* Centra verticalmente los elementos */
+    border-radius: 50%;  /* Aplica un borde redondeado */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);  /* Aplica una sombra al contenedor */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Define la transición para transformaciones */
+}
+
+#nodo-principal:hover {
+    transform: scale(1.1);  /* Escala el tamaño del nodo al pasar el cursor */
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.5);  /* Cambia la sombra del nodo al pasar el cursor */
+    animation: glow 1.5s infinite alternate;  /* Aplica la animación de brillo */
+}
+
+@keyframes glow {
+    0% { box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.8); }
+    100% { box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5); }
+}
+
+/* Nodos secundarios */
+.nodo {
+    position: absolute;  /* Define la posición como absoluta */
+    width: 160px;  /* Establece el ancho */
+    height: 160px;  /* Establece la altura */
+    border-radius: 50%;  /* Aplica un borde redondeado */
+    color: black;  /* Define el color del texto */
+    cursor: pointer;  /* Cambia el cursor al pasar el cursor */
+    display: flex;  /* Utiliza el modelo de caja flexible */
+    align-items: center;  /* Centra verticalmente los elementos */
+    justify-content: center;  /* Centra horizontalmente los elementos */
+    text-align: center;  /* Centra el texto */
+    font-size: 0.9rem;  /* Establece el tamaño de la fuente */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);  /* Aplica una sombra al contenedor */
+    flex-direction: column;  /* Dispone los hijos en columna */
+    opacity: 0;  /* Establece la opacidad en 0 */
+    margin: 10px;  /* Define el margen */
+    animation: bounceOut 0.4s ease-in-out;  /* Aplica la animación de "rebote hacia afuera" */
+    animation-fill-mode: forwards;  /* Mantiene el estado final de la animación */
+}
+
+/* Añadimos un delay a la animación para cada nodo */
+.nodo:nth-child(2)  { animation-delay: 0.2s; background-color: #FF9933; } /* Producción */
+.nodo:nth-child(3)  { animation-delay: 0.4s; background-color: #90a4ae; } /* Operación y Logística */
+.nodo:nth-child(4)  { animation-delay: 0.6s; background-color: #B0B0B0; } /* Dirección General */
+.nodo:nth-child(5)  { animation-delay: 0.8s; background-color: #1E90FF; } /* Tecnología */
+.nodo:nth-child(6)  { animation-delay: 1s;   background-color: #33CC66; } /* Gestión y Calidad */
+.nodo:nth-child(7)  { animation-delay: 1.2s; background-color: #FF33FF; } /* Seguridad */
+.nodo:nth-child(8)  { animation-delay: 1.4s; background-color: #ADD8E6; } /* Administración */
+.nodo:nth-child(9)  { animation-delay: 1.6s; background-color: #dce775; } /* TIC's */
+.nodo:nth-child(10) { animation-delay: 1.8s; background-color: #a98679; } /* Almacén General */
+.nodo:nth-child(11) { animation-delay: 2s;   background-color: #ef5350; } /* Compras */
+
+.nodo img {
+    width: 90px;  /* Establece el ancho de la imagen dentro del nodo */
+    height: 90px;  /* Establece la altura de la imagen dentro del nodo */
+}
+
+.nodo:hover {
+    transform: scale(1.1);  /* Escala el tamaño del nodo al pasar el cursor */
+}
+
+/* Texto dentro de los nodos */
+.nodo span {
+    font-size: 1rem;  /* Establece el tamaño de la fuente del texto */
+    max-width: 80px;  /* Define el ancho máximo del contenedor del texto */
+    text-align: center;  /* Centra el texto */
+}
+
+/* ==========================
+   RESPONSIVE MAPA MENTAL
+   ========================== */
+@media (max-width: 768px) {
+    .mapa-container {
+        display: flex;  /* Utiliza el modelo de caja flexible */
+        flex-wrap: wrap;  /* Permite el ajuste flexible de los elementos */
+        justify-content: center;  /* Centra horizontalmente los elementos */
+        align-items: center;  /* Centra verticalmente los elementos */
+        height: auto;  /* Ajusta automáticamente la altura */
+        padding: 50px 10px;  /* Aplica relleno interno */
+    }
+    
+    #nodo-principal {
+        width: 250px;  /* Establece el ancho del nodo principal */
+        height: 150px;  /* Establece la altura del nodo principal */
+        font-size: 1.2rem;  /* Establece el tamaño de la fuente */
+    }
+    
+    .nodo {
+        width: 100px;  /* Establece el ancho de los nodos secundarios */
+        height: 100px;  /* Establece la altura de los nodos secundarios */
+        font-size: 0.8rem;  /* Establece el tamaño de la fuente */
+        margin: 10px;  /* Define el margen */
+    }
+
+    .nodo img {
+        width: 50px;  /* Establece el ancho de la imagen dentro del nodo */
+        height: 50px;  /* Establece la altura de la imagen dentro del nodo */
+    }
+}
+
+/* Efecto de "rebote hacia afuera" para nodos secundarios */
+@keyframes bounceOut {
+    0% {
+        opacity: 0;  /* Define la opacidad inicial */
+        transform: scale(0.5) translate(0, 0);  /* Establece el tamaño y posición inicial */
+    }
+    50% {
+        opacity: 1;  /* Define la opacidad intermedia */
+        transform: scale(1.1) translate(0, 0);  /* Escala el tamaño del nodo */
+    }
+    100% {
+        opacity: 1;  /* Define la opacidad final */
+        transform: scale(1) translate(var(--x), var(--y));  /* Establece el tamaño y posición final */
+    }
+}

@@ -1,0 +1,153 @@
+Pagina segunda versión 
+HTML:
+(<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Mental Responsivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="segunda.css">
+    <style>
+        body {
+            text-align: center;
+            background-color: #f8f9fa;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .mapa-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            padding: 20px;
+        }
+
+        .nube {
+            position: absolute;
+            width: 250px;
+            height: 150px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .nodo {
+            position: absolute;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            z-index: 2;
+            flex-direction: column;
+            opacity: 0;
+        }
+
+        .nodo img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .nodo:hover {
+            transform: scale(1.1);
+        }
+
+        .nodo-hijo {
+            display: none;
+            background-color: #17a2b8;
+        }
+
+        .linea {
+            position: absolute;
+            background: black;
+            height: 2px;
+            transform-origin: top left;
+            z-index: 1;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mapa-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nube {
+                width: 200px;
+                height: 120px;
+                font-size: 1rem;
+            }
+
+            .nodo {
+                position: relative;
+                padding: 10px;
+                font-size: 0.9rem;
+                width: 100px;
+                text-align: center;
+            }
+
+            .nodo img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="mapa-container">
+    <div class="nube" id="nodo-principal">Mapa Mental</div>
+</div>
+<script>
+    document.getElementById("nodo-principal").addEventListener("click", function() {
+        const container = document.querySelector(".mapa-container");
+        let nodos = document.querySelectorAll(".nodo-hijo");
+
+        if (nodos.length === 0) {
+            const elementos = [
+                {texto: "Salud", icono: "https://cdn-icons-png.freepik.com/512/3182/3182127.png"},
+                {texto: "Seguridad", icono: "https://cdn-icons-png.freepik.com/512/1022/1022382.png"},
+                {texto: "Medio Ambiente", icono: "https://cdn-icons-png.freepik.com/512/1598/1598238.png"},
+                {texto: "Educación", icono: "https://cdn-icons-png.freepik.com/512/3976/3976555.png"},
+                {texto: "Innovación", icono: "https://cdn-icons-png.freepik.com/512/1087/1087927.png"},
+                {texto: "Tecnología", icono: "https://cdn-icons-png.freepik.com/512/780/780477.png"},
+                {texto: "Cultura", icono: "https://cdn-icons-png.freepik.com/512/2788/2788019.png"},
+                {texto: "Sostenibilidad", icono: "https://cdn-icons-png.freepik.com/512/12134/12134560.png"}
+            ];
+
+            elementos.forEach((elem, i) => {
+                let nodo = document.createElement("div");
+                nodo.classList.add("nodo", "nodo-hijo");
+                nodo.innerHTML = `<img src="${elem.icono}" alt="${elem.texto}"><span>${elem.texto}</span>`;
+                container.appendChild(nodo);
+
+                let angle = (i / elementos.length) * (2 * Math.PI);
+                let x = 200 * Math.cos(angle);
+                let y = 200 * Math.sin(angle);
+                nodo.style.transform = `translate(${x}px, ${y}px)`;
+                nodo.style.opacity = "1";
+                nodo.style.display = "flex";
+            });
+        } else {
+            nodos.forEach(nodo => nodo.remove());
+        }
+    });
+</script>
+</body>
+</html>)

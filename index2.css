@@ -1,0 +1,374 @@
+/* ==========================
+   VARIABLES DE COLOR
+========================== */
+:root {
+    --color-primario: #1E90FF;
+    --color-secundario: #33CC66;
+    --color-terciario: #ef5350;
+    --color-fondo: rgb(240, 240, 240);
+    --color-texto: rgb(0, 0, 0);
+    --color-texto2: white; 
+}
+
+/* ==========================
+   ESTILOS GENERALES
+========================== */
+body {
+    font-family: 'Caveat', cursive;
+    text-align: center;
+    background: linear-gradient(135deg, #a5891b, #1d577d, #196f3d, #8b4c14, #49235a, #757575, #1e2a36);
+    background-size: 300% 300%;
+    animation: gradientMove 15s ease infinite;
+    margin: 0;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Animación del fondo */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Efecto de desvanecimiento */
+.fade-in {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ==========================
+   HEADER (ENCABEZADO)
+========================== */
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-fondo);
+    position: relative;
+    box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+header .container:hover {
+    box-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.2);
+}
+
+header .logo img {
+    height: 4rem;
+    transition: transform 0.3s ease;
+}
+
+header .logo img:hover {
+    transform: scale(1.1);
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1rem;
+}
+
+header nav p {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 0.125rem;
+    white-space: nowrap;
+    color: var(--color-texto);
+    text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para las instrucciones en el header */
+header nav a {
+    background-color: var(--color-secundario); /* Cambiamos a un color más llamativo */
+    color: var(--color-texto2);
+    padding: 0.75rem 1.5rem; /* Aumentamos el padding para mayor tamaño */
+    border-radius: 0.5rem;
+    font-size: 1.2rem; /* Incrementamos el tamaño de la fuente */
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    margin-top: 0.5rem; /* Añadimos un margen superior para separación */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2); /* Agregamos una sombra sutil */
+}
+
+header nav a:hover {
+    background-color: #28a745; /* Color más intenso al pasar el cursor */
+    transform: translateY(-0.125rem);
+}
+
+
+/* ==========================
+   MAPA MENTAL
+========================== */
+.mapa-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    width: 100%;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+/* Nodo principal */
+#nodo-principal {
+    position: relative;
+    width: 20rem;
+    height: 20rem;
+    background: linear-gradient(135deg, #00ff44, #6abafa, #ac5eff, #e91e63);
+    color: var(--color-texto2);
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: pulse 2s infinite;
+    margin: 1rem;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+#nodo-principal:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.5);
+    animation: glow 1.5s infinite alternate;
+}
+
+/* Animación de brillo */
+@keyframes glow {
+    0% { box-shadow: 0 0 0.9375rem rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0 0 1.5625rem rgba(255, 255, 255, 0.8); }
+    100% { box-shadow: 0 0 0.9375rem rgba(255, 255, 255, 0.5); }
+}
+
+/* Nodos secundarios */
+.nodo {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1rem;
+    box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.5);
+    flex-direction: column;
+    opacity: 0;
+    margin: 0.5rem;
+    animation: bounceOut 0.4s ease-in-out;
+    animation-fill-mode: forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto al pasar el cursor sobre los nodos */
+.nodo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.6);
+}
+
+/* Animaciones de interacción para los nodos */
+.nodo img {
+    width: 70%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.nodo img:hover {
+    transform: rotate(10deg);
+}
+
+/* Texto dentro de los nodos */
+.nodo span {
+    font-size: 1.1rem;
+    max-width: 90%;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.nodo:hover span {
+    color: var(--color-primario);
+}
+
+/* Añadimos un delay a la animación para cada nodo */
+.nodo:nth-child(2)  { animation-delay: 0.2s; background-color: #FF9933; } /* Producción */
+.nodo:nth-child(3)  { animation-delay: 0.4s; background-color: #90a4ae; } /* Operación y Logística */
+.nodo:nth-child(4)  { animation-delay: 0.6s; background-color: #B0B0B0; } /* Dirección General */
+.nodo:nth-child(5)  { animation-delay: 0.8s; background-color: #1E90FF; } /* Tecnología */
+.nodo:nth-child(6)  { animation-delay: 1s;   background-color: #33CC66; } /* Gestión y Calidad */
+.nodo:nth-child(7)  { animation-delay: 1.2s; background-color: #FF33FF; } /* Seguridad */
+.nodo:nth-child(8)  { animation-delay: 1.4s; background-color: #ADD8E6; } /* Administración */
+.nodo:nth-child(9)  { animation-delay: 1.6s; background-color: #dce775; } /* TIC's */
+.nodo:nth-child(10) { animation-delay: 1.8s; background-color: #a98679; } /* Almacén General */
+.nodo:nth-child(11) { animation-delay: 2s;   background-color: #ef5350; } /* Compras */
+
+
+
+/* ==========================
+   RESPONSIVE DESIGN
+========================== */
+/* Pantallas grandes */
+@media (min-width: 1200px) {
+    /* Ajustes para el nodo principal */
+    #nodo-principal {
+        width: 20rem;
+        height: 20rem;
+        font-size: 2.5rem;
+    }
+
+    /* Ajustes para los nodos secundarios */
+    .nodo {
+        width: 10rem;
+        height: 10rem;
+        font-size: 1.2rem;
+    }
+
+    .nodo img {
+        width: 65%;
+    }
+
+    .nodo span {
+        font-size: 1.2rem;
+    }
+
+    /* Ajustes para el header */
+    header .logo img {
+        height: 5rem;
+    }
+
+    header nav p {
+        font-size: 2.5rem;
+    }
+
+    header nav a {
+        font-size: 1.4rem;
+        padding: 1rem 2rem;
+    }
+}
+
+/* Pantallas medianas */
+@media (max-width: 992px) {
+    #nodo-principal {
+        width: 20rem;
+        height: 20rem;
+        font-size: 1.8rem;
+    }
+
+    .nodo {
+        width: 10rem;
+        height: 10rem;
+        font-size: 0.9rem;
+    }
+
+    .nodo img {
+        width: 60%;
+    }
+}
+
+/* Pantallas pequeñas */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header .logo img {
+        height: 3rem;
+    }
+
+    header nav p {
+        font-size: 1.5rem;
+    }
+
+    #nodo-principal {
+        width: 16rem;
+        height: 16rem;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .nodo {
+        position: relative;
+        width: 15rem;
+        height: 15rem;
+        font-size: 0.8rem;
+        margin: 0.5rem;
+        transform: none;
+        --x: 0;
+        --y: 0;
+        opacity: 1;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .nodo img {
+        width: 70%;
+    }
+
+    .mapa-container {
+        padding: 1rem;
+    }
+}
+
+/* Pantallas extra pequeñas */
+@media (max-width: 480px) {
+    header nav p {
+        font-size: 1.2rem;
+    }
+
+    #nodo-principal {
+        width: 12rem;
+        height: 12rem;
+        font-size: 1.2rem;
+    }
+
+    .nodo {
+        width: 6rem;
+        height: 6rem;
+        font-size: 0.7rem;
+    }
+
+    .nodo img {
+        width: 80%;
+    }
+}
+
+/* Efecto de "rebote hacia afuera" para nodos secundarios */
+@keyframes bounceOut {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translate(0, 0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1) translate(0, 0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translate(var(--x), var(--y));
+    }
+}

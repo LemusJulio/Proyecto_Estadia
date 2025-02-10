@@ -1,0 +1,205 @@
+/* ==========================
+   ESTILOS GENERALES
+   ========================== */
+   body {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    background-color: #e6daf5c6;
+    margin: 0;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Evita que el contenido se amontone */
+    position: relative;
+}
+
+
+
+/* ==========================
+   HEADER (ENCABEZADO)
+   ========================== */
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: rgb(240, 240, 240);
+}
+
+header .logo img {
+    height: 100px; /* Tamaño del logo */
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around; /* Distribuye los elementos de manera uniforme */
+    width: 100%;
+}
+
+header nav p {
+    font-size: 1.3rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+header nav a {
+    background-color: blueviolet;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    background-color: darkviolet;
+}
+
+/* RESPONSIVE HEADER */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    header nav {
+        flex-direction: column;
+        gap: 5px;
+    }
+    header .logo img {
+        height: 60px;
+    }
+}
+
+/* ==========================
+   MAPA MENTAL
+   ========================== */
+.mapa-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 120px); /* Ajusta la altura sin afectar el header */
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Nodo principal (nube central) */
+#nodo-principal {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background: linear-gradient(135deg, #2196f3, #6a11cb, #e91e63);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#nodo-principal:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.5);
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    0% { box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.8); }
+    100% { box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5); }
+}
+
+/* Nodos secundarios */
+.nodo {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%; /* Forma circular */
+    color: black;
+    cursor: pointer;
+    transition: transform 0.3s, opacity 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.9rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+    margin: 10px;
+}
+
+.nodo img {
+    width: 90px;
+    height: 90px;
+}
+
+.nodo:hover {
+    transform: scale(1.1);
+}
+
+/* Colores personalizados de los nodos */
+.nodo:nth-child(2) { background-color: #FF9933; } /* Producción */
+.nodo:nth-child(3) { background-color: #90a4ae; } /* Operación y Logística */
+.nodo:nth-child(4) { background-color: #B0B0B0; } /* Dirección General */
+.nodo:nth-child(5) { background-color: #1E90FF; } /* Tecnología */
+.nodo:nth-child(6) { background-color: #33CC66; } /* Gestión y Calidad */
+.nodo:nth-child(7) { background-color: #FF33FF; } /* Seguridad */
+.nodo:nth-child(8) { background-color: #ADD8E6; } /* Administración */
+.nodo:nth-child(9) { background-color: #dce775; } /* TIC's */
+.nodo:nth-child(10) { background-color: #8d6e63; } /* Almacén General */
+.nodo:nth-child(11) { background-color: #ef5350; } /* Compras */
+
+/* Texto dentro de los nodos */
+.nodo span {
+    font-size: 1.rem;
+    max-width: 80px;
+    text-align: center;
+}
+
+/* Conexiones entre nodos */
+.linea {
+    position: absolute;
+    background: black;
+    height: 2px;
+    transform-origin: top left;
+    z-index: 1;
+    display: none;
+}
+
+/* ==========================
+   RESPONSIVE MAPA MENTAL
+   ========================== */
+@media (max-width: 768px) {
+    .mapa-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        padding: 10px;
+    }
+    
+    #nodo-principal {
+        width: 250px;
+        height: 150px;
+        font-size: 1.2rem;
+    }
+    
+    .nodo {
+        width: 100px;
+        height: 100px;
+        font-size: 0.8rem;
+    }
+
+    .nodo img {
+        width: 50px;
+        height: 50px;
+    }
+}
